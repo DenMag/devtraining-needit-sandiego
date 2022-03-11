@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Home">5fd11afb1b818d10b81fdce7cc4bcb15</macroponent>
+        <name>Write payload object to console</name>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+    // Write the JSON payload of a component to the
+    // browser's console as a string
+    console.log(JSON.stringify(event.payload,null,4));
+    
+    // Script overview: Get current client state parameter values and 
+    // update the values with the selected Request type
+    // filter information
+
+    // Get current client state parameter values
+    var cspListQuery =  api.state.listQuery;
+    var cspListTitle = api.state.listTitle;
+
+    // Clear Request type from existing query by splitting on the parameter
+    // in the encoded query
+    var cspListQueryArray = cspListTitle.split("^u_request_type=");
+
+    // Clear Request type from existing title
+    var cspListTitleArray = cspListTitle.split(" - ");
+
+    // Get payload from handled event
+    var passedQuery = event.payload.heListQuery;
+    var passedTitle = event.payload.heListTitle;
+
+    console.log("passedQuery: " + passedQuery + "\npassedTitle: " + passedTitle + "\ncspListQueryArray: " + cspListQueryArray + "\ncspListTitleArray: " + cspListQueryArray);
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-10 16:48:09</sys_created_on>
+        <sys_id>d6d679171b420110b8e86288b04bcbbe</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Write payload object to console</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ux_client_script_d6d679171b420110b8e86288b04bcbbe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-10 21:10:54</sys_updated_on>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>
